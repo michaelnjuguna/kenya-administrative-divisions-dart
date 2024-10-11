@@ -104,9 +104,10 @@ final wards = kenyaAdmin.getWards(null, 'Westlands');
 1. Fork this repository.
 2. Create new branch with feature name.
 3. Create your feature.
-4. Commit and set commit message with feature name.
-5. Push your code to your fork repository.
-6. Create pull request.
+4. Run the tests and ensure they pass
+5. Commit and set commit message with feature name.
+6. Push your code to your fork repository.
+7. Create pull request.
 
 ## Support
 
