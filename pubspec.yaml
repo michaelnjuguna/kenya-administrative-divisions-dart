@@ -1,10 +1,11 @@
 name: kenya_administrative_divisions
-description: A starting point for Dart libraries or applications.
+description: The Kenya Administrative Divisions is a package that provides functionality to retrieve administrative divisions data about Kenya. It includes information about counties, constituencies, and wards..
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+
+repository: https://github.com/michaelnjuguna/kenya-administrative-divisions-dart
 
 environment:
-  sdk: ^3.5.3
+  sdk: ">=3.0.0 <4.0.0"
 
 # Add regular dependencies here.
 
