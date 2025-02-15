@@ -19,15 +19,10 @@ The **Kenya Administrative Divisions** is a package that provides functionality 
 
 To install the package, add it to your **pubspeck.yaml**
 
-```yaml
-dependencies:
-  kenya_administrative_divisions: ^1.0.0
-```
-
-Then run
+Run
 
 ```bash
-dart pub get
+dart pub add kenya_administrative_divisions
 ```
 
 ## Usage
