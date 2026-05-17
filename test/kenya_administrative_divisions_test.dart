@@ -14,11 +14,11 @@ void main() {
   //   });
   // });
 
-  late KenyaAdministrativeDivisionsBase adminDivisions;
+  late MainController adminDivisions;
 
   setUp(() {
     // Initialize the KenyaAdministrativeDivisionsBase instance before each test
-    adminDivisions = KenyaAdministrativeDivisionsBase();
+    adminDivisions = MainController();
   });
 
   group('KenyaAdministrativeDivisionsBase Tests', () {

@@ -2,10 +2,10 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:path/path.dart' as path;
 
-class KenyaAdministrativeDivisionsBase {
+class MainController {
   late final List<dynamic> _data;
 
-  KenyaAdministrativeDivisionsBase() {
+  MainController() {
     // Determine the absolute path to the county.json file
     // final scriptPath = Platform.script.toFilePath();
     // final scriptDir = path.dirname(scriptPath);
@@ -158,56 +158,4 @@ class KenyaAdministrativeDivisionsBase {
   }
 }
 
-// void main() {
-//   try {
-//     // Create an instance of KenyaAdministrativeDivisionsBase
-//     var kenyaAdminDivisions = KenyaAdministrativeDivisionsBase();
-
-//     // Test getAll method
-//     print('All Data:');
-//     print(kenyaAdminDivisions.getAll);
-
-//     // Test getCounties method with different inputs
-//     print('\nAll Counties:');
-//     print(kenyaAdminDivisions.getCounties());
-
-//     print('\nCounty by Index (e.g., 1):');
-//     print(kenyaAdminDivisions.getCounties(1));
-
-//     print('\nCounty by Name (e.g., "Nairobi"):');
-//     print(kenyaAdminDivisions.getCounties('Nairobi'));
-
-//     // Test getConstituencies method with different inputs
-//     print('\nAll Constituencies:');
-//     print(kenyaAdminDivisions.getConstituencies());
-
-//     print('\nConstituencies by County Index (e.g., 1):');
-//     print(kenyaAdminDivisions.getConstituencies(1));
-
-//     print('\nConstituency by Name (e.g., "Starehe"):');
-//     print(kenyaAdminDivisions.getConstituencies('Starehe'));
-
-//     // Test getWards method with different inputs
-//     print('\nAll Wards:');
-//     print(kenyaAdminDivisions.getWards());
-
-//     print('\nWards by County Index (e.g., 1):');
-//     print(kenyaAdminDivisions.getWards(1));
-
-//     print('\nWards by County Name (e.g., "Nairobi"):');
-//     print(kenyaAdminDivisions.getWards('Nairobi'));
-
-//     print('\nWards by Constituency Name (e.g., "Starehe"):');
-//     print(kenyaAdminDivisions.getWards(null, 'Starehe'));
-
-//     print(
-//         '\nWards by County Index and Constituency Name (e.g., 1, "Starehe"):');
-//     print(kenyaAdminDivisions.getWards(1, 'Starehe'));
-
-//     print(
-//         '\nWards by County Name and Constituency Name (e.g., "Nairobi", "Starehe"):');
-//     print(kenyaAdminDivisions.getWards('Nairobi', 'Starehe'));
-//   } catch (e) {
-//     print('Error: $e');
-//   }
-// }
+final kenyaAdministrativeDivisions = MainController();
