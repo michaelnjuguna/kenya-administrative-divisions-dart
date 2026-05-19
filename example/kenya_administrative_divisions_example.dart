@@ -5,13 +5,13 @@ void main() {
   print('Get all ${kenyaAdministrativeDivisions.getAll}');
 
   // Counties
-  print('counties ${kenyaAdministrativeDivisions.getCounties(3)}');
+  // print('counties ${kenyaAdministrativeDivisions.getCounties(3)}');
 
-  // Constituencies
-  print(
-      'Constituencies ${kenyaAdministrativeDivisions.getConstituencies('Westlands')}');
+  // // Constituencies
+  // print(
+  //     'Constituencies ${kenyaAdministrativeDivisions.getConstituencies('Westlands')}');
 
-  // Wards
-  print(
-      'Wards ${kenyaAdministrativeDivisions.getWards('Nairobi', "Lang'ata")}');
+  // // Wards
+  // print(
+  //     'Wards ${kenyaAdministrativeDivisions.getWards('Nairobi', "Lang'ata")}');
 }
