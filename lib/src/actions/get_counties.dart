@@ -1,5 +1,5 @@
 import 'package:kenya_administrative_divisions/src/models.dart';
-import 'package:kenya_administrative_divisions/src/params.dart';
+import 'package:kenya_administrative_divisions/src/core/params.dart';
 
 class GetCounties {
   final List<County> data;

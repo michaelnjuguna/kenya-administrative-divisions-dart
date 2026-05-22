@@ -7,7 +7,8 @@ class MainController {
   late final List<County> _data;
 
   MainController() {
-    final filePath = path.join(Directory.current.path, 'lib/src/county.json');
+    final filePath =
+        path.join(Directory.current.path, 'lib/src/core/county.json');
     try {
       final file = File(filePath).readAsStringSync();
       final List<dynamic> dataList = json.decode(file);
