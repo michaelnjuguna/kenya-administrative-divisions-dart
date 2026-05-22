@@ -1,5 +1,7 @@
 import 'dart:io';
 import 'dart:convert';
+import 'package:kenya_administrative_divisions/src/actions/get_counties.dart';
+import 'package:kenya_administrative_divisions/src/core/params.dart';
 import 'package:kenya_administrative_divisions/src/models.dart';
 import 'package:path/path.dart' as path;
 
@@ -23,6 +25,10 @@ class MainController {
     return _data;
   }
 
+// TODO: Helper methods
+  List<County> getCounties({GetCountiesParams? params}) {
+    return GetCounties(data: _data, params: params)();
+  }
 // // Get counties
 //   dynamic getCounties([dynamic input]) {
 //     List<dynamic> counties = [];
