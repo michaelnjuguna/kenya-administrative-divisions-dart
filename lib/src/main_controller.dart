@@ -26,8 +26,11 @@ class MainController {
   }
 
 // TODO: Helper methods
-  List<County> getCounties({GetCountiesParams? params}) {
-    return GetCounties(data: _data, params: params)();
+  List<County> getCounties({int? countyCode, String? countyName}) {
+    return GetCounties(
+      data: _data,
+      params: (countyCode: countyCode, countyName: countyName),
+    )();
   }
 // // Get counties
 //   dynamic getCounties([dynamic input]) {
