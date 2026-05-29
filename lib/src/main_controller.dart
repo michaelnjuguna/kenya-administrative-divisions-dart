@@ -21,41 +21,25 @@ class MainController {
   }
 
   // Get all
+// TODO: Helper methods
   List<County> get getAll {
     return _data;
   }
 
-// TODO: Helper methods
+  List<String> get getCountyNames {
+    try {
+      return _data.map((county) => county.countyName).toList();
+    } catch (e) {
+      throw Exception('Error getting county names: $e');
+    }
+  }
+
   List<County> getCounties({int? countyCode, String? countyName}) {
     return GetCounties(
       data: _data,
       params: (countyCode: countyCode, countyName: countyName),
     )();
   }
-// // Get counties
-//   dynamic getCounties([dynamic input]) {
-//     List<dynamic> counties = [];
-//     if (input == null) {
-//       for (var i = 0; i < 47; i++) {
-//         counties.add(_data[i]['county_name']);
-//       }
-//     } else if (input is int && input > 0 && input < 48) {
-//       return _data[input - 1];
-//     } else if (input is String) {
-//       String lowerCaseInput = input.toLowerCase();
-//       for (var county in _data) {
-//         if (county['county_name'].toLowerCase() == lowerCaseInput) {
-//           return county;
-//         }
-//       }
-//       throw ArgumentError('County not found');
-//     } else {
-//       throw ArgumentError('Invalid input type');
-//     }
-//     return counties.isNotEmpty
-//         ? counties
-//         : "Error: Invalid parameter provided. Please check your input and try again.";
-//   }
 
 // // Get constituencies
 //   dynamic getConstituencies([dynamic input]) {

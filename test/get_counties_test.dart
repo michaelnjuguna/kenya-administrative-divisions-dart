@@ -1,13 +1,7 @@
 import 'package:kenya_administrative_divisions/src/models.dart';
 import 'package:test/test.dart';
 import 'package:kenya_administrative_divisions/kenya_administrative_divisions.dart';
-
-void expectValidCounty(County county,
-    {required int expectedCode, required String expectedName}) {
-  expect(county, isA<County>());
-  expect(county.countyCode, equals(expectedCode));
-  expect(county.countyName, equals(expectedName));
-}
+import 'test_utils.dart';
 
 void main() {
   late MainController kad;
