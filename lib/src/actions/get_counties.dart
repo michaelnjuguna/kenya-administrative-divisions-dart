@@ -8,7 +8,8 @@ class GetCounties {
   List<County> call() {
     try {
       final args = params;
-      if (args == null) {
+      if (args == null ||
+          (args.countyCode == null && args.countyName == null)) {
         return data;
       }
       if (args.countyCode != null) {
@@ -21,11 +22,15 @@ class GetCounties {
       if (args.countyName != null) {
         final county = data.where((c) =>
             c.countyName.toLowerCase() == args.countyName!.toLowerCase());
+
         return county.toList();
       }
+
       return [];
-    } catch (e) {
-      throw Exception('GetCounties failed: $e');
+    } on ArgumentError {
+      rethrow;
+    } catch (e, st) {
+      throw Exception('GetCounties failed: $e\n$st');
     }
   }
 }

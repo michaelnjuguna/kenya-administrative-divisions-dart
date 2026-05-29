@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:convert';
 import 'package:kenya_administrative_divisions/src/actions/get_counties.dart';
-import 'package:kenya_administrative_divisions/src/core/params.dart';
+// import 'package:kenya_administrative_divisions/src/core/params.dart';
 import 'package:kenya_administrative_divisions/src/models.dart';
 import 'package:path/path.dart' as path;
 
@@ -15,8 +15,8 @@ class MainController {
       final file = File(filePath).readAsStringSync();
       final List<dynamic> dataList = json.decode(file);
       _data = dataList.map((e) => County.fromJson(e)).toList();
-    } catch (e) {
-      throw Exception('Error reading JSON file: $e');
+    } catch (e, st) {
+      throw Exception('Error reading JSON file: $e\n$st');
     }
   }
 
