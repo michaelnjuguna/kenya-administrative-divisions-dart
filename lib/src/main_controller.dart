@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:convert';
+import 'package:kenya_administrative_divisions/src/actions/get_constituencies.dart';
 import 'package:kenya_administrative_divisions/src/actions/get_counties.dart';
 // import 'package:kenya_administrative_divisions/src/core/params.dart';
 import 'package:kenya_administrative_divisions/src/models.dart';
@@ -39,6 +40,15 @@ class MainController {
       data: _data,
       params: (countyCode: countyCode, countyName: countyName),
     )();
+  }
+
+  List<Constituency> getConstituencies(
+      {int? countyCode, String? countyName, String? constituencyName}) {
+    return GetConstituencies(data: _data, params: (
+      constituencyName: constituencyName,
+      countyCode: countyCode,
+      countyName: countyName
+    ))();
   }
 
 // // Get constituencies
