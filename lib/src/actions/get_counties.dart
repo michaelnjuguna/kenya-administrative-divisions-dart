@@ -5,7 +5,7 @@ class GetCounties {
   final List<County> data;
   final GetCountiesParams? params;
   GetCounties({required this.data, this.params});
-  List<County> call() {
+  List<County> execute() {
     try {
       final args = params;
       if (args == null ||

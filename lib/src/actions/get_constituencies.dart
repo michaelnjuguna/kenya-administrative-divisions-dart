@@ -5,7 +5,7 @@ class GetConstituencies {
   final List<County> data;
   final GetConstituenciesParams? params;
   GetConstituencies({required this.data, this.params});
-  List<Constituency> call() {
+  List<Constituency> execute() {
     try {
       final args = params;
       if (args == null ||
@@ -13,6 +13,32 @@ class GetConstituencies {
               args.constituencyName == null &&
               args.countyName == null)) {
         return data.expand((county) => county.constituencies).toList();
+      }
+      if (args.countyCode != null) {
+        final code = args.countyCode!;
+        if (code < 1 || code > 47) {
+          throw ArgumentError('CountyCode must be between 1 and 47');
+        }
+        return data[code - 1].constituencies;
+      }
+      if (args.countyName != null) {
+        final result = data.firstWhere(
+            (d) => d.countyName.toLowerCase() == args.countyName!.toLowerCase(),
+            orElse: () =>
+                throw ArgumentError('County "${args.countyName}" not found'));
+
+        return result.constituencies;
+      }
+      if (args.constituencyName != null) {
+        final match = data.expand((county) => county.constituencies).where(
+            (c) =>
+                c.constituencyName.toLowerCase() ==
+                args.constituencyName!.toLowerCase());
+        if (match.isEmpty) {
+          throw ArgumentError(
+              'Constituency "${args.constituencyName}" not found ');
+        }
+        return match.toList();
       }
       return [];
     } on ArgumentError {

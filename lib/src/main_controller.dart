@@ -34,12 +34,15 @@ class MainController {
       throw Exception('Error getting county names: $e');
     }
   }
+  // List<String> getConstituencyNames({int? countyCode,String? countyName}){
+
+  // }
 
   List<County> getCounties({int? countyCode, String? countyName}) {
     return GetCounties(
       data: _data,
       params: (countyCode: countyCode, countyName: countyName),
-    )();
+    ).execute();
   }
 
   List<Constituency> getConstituencies(
@@ -48,7 +51,7 @@ class MainController {
       constituencyName: constituencyName,
       countyCode: countyCode,
       countyName: countyName
-    ))();
+    )).execute();
   }
 
 // // Get constituencies
