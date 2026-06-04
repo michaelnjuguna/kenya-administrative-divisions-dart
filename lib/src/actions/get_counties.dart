@@ -1,10 +1,12 @@
+import 'package:kenya_administrative_divisions/src/core/interfaces.dart';
 import 'package:kenya_administrative_divisions/src/models.dart';
 import 'package:kenya_administrative_divisions/src/core/params.dart';
 
-class GetCounties {
+class GetCounties implements Action {
   final List<County> data;
   final GetCountiesParams? params;
   GetCounties({required this.data, this.params});
+  @override
   List<County> execute() {
     try {
       final args = params;

@@ -2,6 +2,8 @@ import 'package:kenya_administrative_divisions/src/models.dart';
 import 'package:test/test.dart';
 import 'package:kenya_administrative_divisions/kenya_administrative_divisions.dart';
 
+import 'test_utils.dart';
+
 void main() {
   late MainController kad;
   setUp(() {
@@ -11,6 +13,15 @@ void main() {
     test('No parameter passed', () {
       final List<Constituency> result = kad.getConstituencies();
       expect(result, isNotEmpty);
+    });
+    test('Invalid county code passed as param', () {
+      expect(() => kad.getConstituencies(countyCode: 0), throwsArgumentError);
+      expect(() => kad.getConstituencies(countyCode: 48), throwsArgumentError);
+    });
+    test('Valid county code passed as param', () {
+      final List<Constituency> result = kad.getConstituencies(countyCode: 1);
+      expect(result.length, equals(6));
+      expectValidConstituency(result.first, name: 'Changamwe');
     });
   });
 }

@@ -8,3 +8,9 @@ void expectValidCounty(County county,
   expect(county.countyName, equals(expectedName));
   expect(county.constituencies, isList);
 }
+
+void expectValidConstituency(Constituency constituency,
+    {required String name}) {
+  expect(constituency, isA<Constituency>());
+  expect(constituency.constituencyName, name);
+}

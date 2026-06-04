@@ -54,36 +54,6 @@ class MainController {
     )).execute();
   }
 
-// // Get constituencies
-//   dynamic getConstituencies([dynamic input]) {
-//     List<dynamic> constituencies = [];
-//     if (input == null) {
-//       for (var county in _data) {
-//         county['constituencies'].forEach((constituency) =>
-//             {constituencies.add(constituency['constituency_name'])});
-//       }
-//     } else if (input is int && input > 0 && input < 48) {
-//       _data[input - 1]['constituencies'].forEach((constituency) =>
-//           {constituencies.add(constituency['constituency_name'])});
-//     } else if (input is String) {
-//       var lowerCaseInput = input.toLowerCase();
-//       for (var county in _data) {
-//         for (var constituency in county['constituencies']) {
-//           if (constituency['constituency_name'].toLowerCase() ==
-//               lowerCaseInput) {
-//             return constituency;
-//           }
-//         }
-//       }
-//       throw ArgumentError('Constituency not found');
-//     } else {
-//       throw ArgumentError('Invalid input type');
-//     }
-//     return constituencies.isNotEmpty
-//         ? constituencies
-//         : "Error: Invalid parameter provided. Please check your input and try again.";
-//   }
-
 // // Get ward
 //   dynamic getWards([dynamic county, String? constituency]) {
 //     List<dynamic> wards = [];

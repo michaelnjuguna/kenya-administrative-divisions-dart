@@ -1,10 +1,12 @@
+import 'package:kenya_administrative_divisions/src/core/interfaces.dart';
 import 'package:kenya_administrative_divisions/src/core/params.dart';
 import 'package:kenya_administrative_divisions/src/models.dart';
 
-class GetConstituencies {
+class GetConstituencies implements Action<List<Constituency>> {
   final List<County> data;
   final GetConstituenciesParams? params;
   GetConstituencies({required this.data, this.params});
+  @override
   List<Constituency> execute() {
     try {
       final args = params;
