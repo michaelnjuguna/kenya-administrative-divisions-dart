@@ -34,9 +34,35 @@ class MainController {
       throw Exception('Error getting county names: $e');
     }
   }
-  // List<String> getConstituencyNames({int? countyCode,String? countyName}){
 
-  // }
+  List<String> getConstituencyNames({int? countyCode, String? countyName}) {
+    try {
+      if (countyCode != null) {
+        final index = countyCode - 1;
+        if (index < 0 || index >= _data.length) {
+          throw Exception('Invalid county code: $countyCode');
+        }
+
+        return _data[index]
+            .constituencies
+            .map((c) => c.constituencyName)
+            .toList();
+      }
+      if (countyName != null) {
+        final county = _data.firstWhere(
+          (c) => c.countyName.toLowerCase() == countyName.toLowerCase(),
+          orElse: () => throw Exception('County not found: $countyName'),
+        );
+        return county.constituencies.map((c) => c.constituencyName).toList();
+      }
+      return _data
+          .expand((c) => c.constituencies)
+          .map((con) => con.constituencyName)
+          .toList();
+    } catch (e) {
+      throw Exception('Error getting constituency names: $e');
+    }
+  }
 
   List<County> getCounties({int? countyCode, String? countyName}) {
     return GetCounties(
