@@ -23,5 +23,25 @@ void main() {
       expect(result.length, equals(6));
       expectValidConstituency(result.first, name: 'Changamwe');
     });
+    test('Invalid string passed as county name', () {
+      expect(() => kad.getConstituencies(countyName: 'Invalid name'),
+          throwsArgumentError);
+    });
+    test('Valid county name passed', () {
+      final List<Constituency> result =
+          kad.getConstituencies(countyName: 'mombasa');
+      expect(result.length, equals(6));
+      expectValidConstituency(result.first, name: 'Changamwe');
+    });
+    test('Invalid constituency name passed ', () {
+      expect(() => kad.getConstituencies(constituencyName: 'Invalid name'),
+          throwsArgumentError);
+    });
+    test('Valid constituency name passed', () {
+      final List<Constituency> result =
+          kad.getConstituencies(constituencyName: 'Changamwe');
+      expect(result.length, equals(1));
+      expectValidConstituency(result.single, name: 'Changamwe');
+    });
   });
 }
