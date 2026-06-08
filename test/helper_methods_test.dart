@@ -21,6 +21,11 @@ void main() {
       expect(counties.first, equals('Mombasa'));
     });
     // TODO:
-    test('Get constituency names', () {});
+    test('Get constituency names invalid number passed as county code', () {
+      expect(
+          () => kad.getConstituencyNames(countyCode: 48), throwsArgumentError);
+      expect(
+          () => kad.getConstituencyNames(countyCode: 0), throwsArgumentError);
+    });
   });
 }

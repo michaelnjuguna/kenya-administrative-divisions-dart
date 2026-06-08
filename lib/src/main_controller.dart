@@ -40,7 +40,7 @@ class MainController {
       if (countyCode != null) {
         final index = countyCode - 1;
         if (index < 0 || index >= _data.length) {
-          throw Exception('Invalid county code: $countyCode');
+          throw ArgumentError('Invalid county code: $countyCode');
         }
 
         return _data[index]
@@ -51,7 +51,7 @@ class MainController {
       if (countyName != null) {
         final county = _data.firstWhere(
           (c) => c.countyName.toLowerCase() == countyName.toLowerCase(),
-          orElse: () => throw Exception('County not found: $countyName'),
+          orElse: () => throw ArgumentError('County not found: $countyName'),
         );
         return county.constituencies.map((c) => c.constituencyName).toList();
       }
@@ -59,6 +59,8 @@ class MainController {
           .expand((c) => c.constituencies)
           .map((con) => con.constituencyName)
           .toList();
+    } on ArgumentError {
+      rethrow;
     } catch (e) {
       throw Exception('Error getting constituency names: $e');
     }
