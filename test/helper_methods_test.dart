@@ -20,12 +20,30 @@ void main() {
       expect(counties.length, equals(47));
       expect(counties.first, equals('Mombasa'));
     });
-    // TODO:
-    test('Get constituency names invalid number passed as county code', () {
+  });
+  group('Get constituency names', () {
+    test('Invalid number passed as county code', () {
       expect(
           () => kad.getConstituencyNames(countyCode: 48), throwsArgumentError);
       expect(
           () => kad.getConstituencyNames(countyCode: 0), throwsArgumentError);
+    });
+    test('Valid number passed as county code', () {
+      final List<String> result = kad.getConstituencyNames(countyCode: 1);
+      expect(result.first, 'Changamwe');
+    });
+    test('Invalid name passed as county name', () {
+      expect(() => kad.getConstituencyNames(countyName: 'Invalid name'),
+          throwsArgumentError);
+    });
+    test('Valid name passed as county name', () {
+      final List<String> result =
+          kad.getConstituencyNames(countyName: 'mombasa');
+      expect(result.first, 'Changamwe');
+    });
+    test('No param passed', () {
+      final List<String> result = kad.getConstituencyNames();
+      expect(result[2], 'Kisauni');
     });
   });
 }
