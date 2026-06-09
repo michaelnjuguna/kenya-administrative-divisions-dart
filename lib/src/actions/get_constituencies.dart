@@ -10,39 +10,40 @@ class GetConstituencies implements Action<List<Constituency>> {
   List<Constituency> execute() {
     try {
       final args = params;
-      if (args == null ||
-          (args.countyCode == null &&
-              args.constituencyName == null &&
-              args.countyName == null)) {
-        return data.expand((county) => county.constituencies).toList();
-      }
-      if (args.countyCode != null) {
-        final code = args.countyCode!;
+      // if (args == null ||
+      //     (args.countyCode == null &&
+      //         args.constituencyName == null &&
+      //         args.countyName == null)) {
+      //   return data.expand((county) => county.constituencies).toList();
+      // }
+      if (args?.countyCode != null) {
+        final code = args!.countyCode!;
         if (code < 1 || code > 47) {
           throw ArgumentError('CountyCode must be between 1 and 47');
         }
         return data[code - 1].constituencies;
       }
-      if (args.countyName != null) {
+      if (args?.countyName != null) {
         final result = data.firstWhere(
-            (d) => d.countyName.toLowerCase() == args.countyName!.toLowerCase(),
+            (d) =>
+                d.countyName.toLowerCase() == args!.countyName!.toLowerCase(),
             orElse: () =>
-                throw ArgumentError('County "${args.countyName}" not found'));
+                throw ArgumentError('County "${args!.countyName}" not found'));
 
         return result.constituencies;
       }
-      if (args.constituencyName != null) {
+      if (args?.constituencyName != null) {
         final match = data.expand((county) => county.constituencies).where(
             (c) =>
                 c.constituencyName.toLowerCase() ==
-                args.constituencyName!.toLowerCase());
+                args!.constituencyName!.toLowerCase());
         if (match.isEmpty) {
           throw ArgumentError(
-              'Constituency "${args.constituencyName}" not found ');
+              'Constituency "${args!.constituencyName}" not found ');
         }
         return match.toList();
       }
-      return [];
+      return data.expand((county) => county.constituencies).toList();
     } on ArgumentError {
       rethrow;
     } catch (e, st) {

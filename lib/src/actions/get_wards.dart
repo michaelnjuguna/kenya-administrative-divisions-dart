@@ -10,17 +10,8 @@ class GetWards implements Action {
   List<Ward> execute() {
     try {
       final args = params;
-      if (args == null ||
-          (args.countyCode == null &&
-              args.constituencyName == null &&
-              args.countyName == null)) {
-        return data
-            .expand((county) => county.constituencies
-                .expand((constituency) => constituency.wards))
-            .toList();
-      }
-      if (args.countyCode != null) {
-        final code = args.countyCode!;
+      if (args?.countyCode != null) {
+        final code = args!.countyCode!;
         if (code < 1 || code > 47) {
           throw ArgumentError('CountyCode must be between 1 and 47');
         }
@@ -28,7 +19,30 @@ class GetWards implements Action {
             data[code - 1].constituencies.expand((c) => c.wards).toList();
         return wards;
       }
-      return [];
+      if (args?.countyName != null) {
+        County county = data.firstWhere(
+            (c) =>
+                c.countyName.toLowerCase() == args?.countyName!.toLowerCase(),
+            orElse: () =>
+                throw ArgumentError('County "${args?.countyName}" not found'));
+        final result = county.constituencies.expand((c) => c.wards).toList();
+        return result;
+      }
+      if (args?.constituencyName != null) {
+        final Constituency constituency = data
+            .expand((c) => c.constituencies)
+            .firstWhere(
+                (c) =>
+                    c.constituencyName.toLowerCase() ==
+                    args?.constituencyName!.toLowerCase(),
+                orElse: () => throw ArgumentError(
+                    'Constituency "${args?.constituencyName}" not found'));
+        return constituency.wards;
+      }
+      return data
+          .expand((county) => county.constituencies
+              .expand((constituency) => constituency.wards))
+          .toList();
     } on ArgumentError {
       rethrow;
     } catch (e, st) {
