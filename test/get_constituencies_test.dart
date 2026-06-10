@@ -22,6 +22,7 @@ void main() {
       final List<Constituency> result = kad.getConstituencies(countyCode: 1);
       expect(result.length, equals(6));
       expectValidConstituency(result.first, name: 'Changamwe');
+      expect(result.first.constituencyName, 'Changamwe');
     });
     test('Invalid string passed as county name', () {
       expect(() => kad.getConstituencies(countyName: 'Invalid name'),

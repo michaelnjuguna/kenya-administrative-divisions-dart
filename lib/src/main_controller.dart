@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:kenya_administrative_divisions/src/actions/get_constituencies.dart';
 import 'package:kenya_administrative_divisions/src/actions/get_counties.dart';
+import 'package:kenya_administrative_divisions/src/actions/get_wards.dart';
 // import 'package:kenya_administrative_divisions/src/core/params.dart';
 import 'package:kenya_administrative_divisions/src/models.dart';
 import 'package:path/path.dart' as path;
@@ -76,83 +77,20 @@ class MainController {
   List<Constituency> getConstituencies(
       {int? countyCode, String? countyName, String? constituencyName}) {
     return GetConstituencies(data: _data, params: (
-      constituencyName: constituencyName,
       countyCode: countyCode,
-      countyName: countyName
+      countyName: countyName,
+      constituencyName: constituencyName,
     )).execute();
   }
 
-// // Get ward
-//   dynamic getWards([dynamic county, String? constituency]) {
-//     List<dynamic> wards = [];
-
-//     // When no input is provided
-//     if (county == null && constituency == null) {
-//       for (var county in _data) {
-//         for (var constituency in county['constituencies']) {
-//           wards.addAll(constituency['wards']);
-//         }
-//       }
-//     }
-//     // When only county code or name is provided
-//     else if (county != null && constituency == null) {
-//       if (county is int && county > 0 && county < 48) {
-//         for (var constituency in _data[county - 1]['constituencies']) {
-//           wards.addAll(constituency['wards']);
-//         }
-//       } else if (county is String) {
-//         for (var countyItem in _data) {
-//           if (countyItem['county_name'].toLowerCase() == county.toLowerCase()) {
-//             for (var constituency in countyItem['constituencies']) {
-//               wards.addAll(constituency['wards']);
-//             }
-//             break;
-//           }
-//         }
-//       }
-//     }
-//     // When only the constituency name is provided
-//     else if (county == null && constituency != null) {
-//       for (var county in _data) {
-//         for (var constituencyItem in county['constituencies']) {
-//           if (constituencyItem['constituency_name'].toLowerCase() ==
-//               constituency.toLowerCase()) {
-//             wards = constituencyItem['wards'];
-//             break;
-//           }
-//         }
-//       }
-//     }
-//     // When both the county name/code and the constituency name are provided
-//     else if (county != null && constituency != null) {
-//       if (county is int && county > 0 && county < 48) {
-//         for (var constituencyItem in _data[county - 1]['constituencies']) {
-//           if (constituencyItem['constituency_name'].toLowerCase() ==
-//               constituency.toLowerCase()) {
-//             wards = constituencyItem['wards'];
-//             break;
-//           }
-//         }
-//       } else if (county is String) {
-//         for (var countyItem in _data) {
-//           if (countyItem['county_name'].toLowerCase() == county.toLowerCase()) {
-//             for (var constituencyItem in countyItem['constituencies']) {
-//               if (constituencyItem['constituency_name'].toLowerCase() ==
-//                   constituency.toLowerCase()) {
-//                 wards = constituencyItem['wards'];
-//                 break;
-//               }
-//             }
-//             break;
-//           }
-//         }
-//       }
-//     }
-
-//     return wards.isNotEmpty
-//         ? wards
-//         : "Error: Invalid parameter provided. Please check your input and try again.";
-//   }
+  List<Ward> getWards(
+      {int? countyCode, String? countyName, String? constituencyName}) {
+    return GetWards(data: _data, params: (
+      countyCode: countyCode,
+      countyName: countyName,
+      constituencyName: constituencyName
+    )).execute();
+  }
 }
 
 final kenyaAdministrativeDivisions = MainController();

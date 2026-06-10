@@ -21,6 +21,7 @@ class GetConstituencies implements Action<List<Constituency>> {
         if (code < 1 || code > 47) {
           throw ArgumentError('CountyCode must be between 1 and 47');
         }
+
         return data[code - 1].constituencies;
       }
       if (args?.countyName != null) {
