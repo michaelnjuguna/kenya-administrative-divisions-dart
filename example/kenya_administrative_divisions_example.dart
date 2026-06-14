@@ -1,17 +1,29 @@
-import 'package:kenya_administrative_divisions/src/main_controller.dart';
+import 'package:kenya_administrative_divisions/kenya_administrative_divisions.dart';
 
 void main() {
-  // Get all
-  print('Get all ${kenyaAdministrativeDivisions.getAll}');
+  final kad = kenyaAdministrativeDivisions;
+  // Get All the data
+  final List<County> counties = kad.getAll;
 
-  // Counties
-  // print('counties ${kenyaAdministrativeDivisions.getCounties(3)}');
-
-  // // Constituencies
-  // print(
-  //     'Constituencies ${kenyaAdministrativeDivisions.getConstituencies('Westlands')}');
-
-  // // Wards
-  // print(
-  //     'Wards ${kenyaAdministrativeDivisions.getWards('Nairobi', "Lang'ata")}');
+// Get county names
+  final List<String> countyNames = kad.getCountyNames;
+// Get constituency names
+  final List<String> constituencyNames = kad.getConstituencyNames();
+  final List<String> constituencyNamesByCountyName =
+      kad.getConstituencyNames(countyName: 'Mombasa');
+  final List<String> constituencyNamesByCountyCode =
+      kad.getConstituencyNames(countyCode: 1);
+  final List<County> allCounties = kad.getCounties();
+  final List<County> county = kad.getCounties(countyCode: 1);
+  final List<County> mombasa = kad.getCounties(countyName: 'Mombasa');
+  final List<Constituency> constituencies = kad.getConstituencies();
+  final List<Constituency> mombasaConstituencies =
+      kad.getConstituencies(countyCode: 1);
+  final List<Constituency> mombasaConstituenciesByCountyName =
+      kad.getConstituencies(countyName: 'mombasa');
+  final List<Ward> wards = kad.getWards();
+  final List<Ward> mombasaWards = kad.getWards(countyCode: 1);
+  final List<Ward> mombasaWardsByCountyName =
+      kad.getWards(countyName: 'mombasa');
+  List<Ward> changamweWards = kad.getWards(constituencyName: 'changamwe');
 }

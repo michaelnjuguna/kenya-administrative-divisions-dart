@@ -56,7 +56,7 @@ final List<County> counties = kad.getAll;
 final List<String> countyNames = kad.getCountyNames;
 // Get constituency names
 final List<String> constituencyNames = kad.getConstituencyNames();
-final List<String> constituencyNames = kad.getConstituencyName(countyName: 'Mombasa');
+final List<String> constituencyNames = kad.getConstituencyNames(countyName: 'Mombasa');
 final List<String> constituencyNames = kad.getConstituencyNames(countyCode: 1);
 
 ```
