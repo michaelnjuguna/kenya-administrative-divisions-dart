@@ -30,17 +30,11 @@ class Constituency {
   factory Constituency.fromJson(Map<String, dynamic> json) {
     return Constituency(
       constituencyName: json['constituency_name'] as String,
-      wards: (json['wards'] as List<dynamic>).cast<Ward>().toList(),
+      wards: (json['wards'] as List<dynamic>)
+          .map((e) => Ward(e as String))
+          .toList(),
     );
   }
 }
 
 extension type const Ward(String _) implements String {}
-// class Ward {
-//   final String name;
-
-//   const Ward({required this.name});
-//   factory Ward.fromJson(String name) => Ward(name: name);
-//   @override
-//   String toString() => name;
-// }

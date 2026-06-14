@@ -5,5 +5,4 @@ library;
 
 export 'src/main_controller.dart'
     show MainController, kenyaAdministrativeDivisions;
-
-// TODO: Export any libraries intended for clients of this package.
+export 'src/models.dart' show County, Constituency, Ward;
