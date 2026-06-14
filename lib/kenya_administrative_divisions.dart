@@ -3,6 +3,6 @@
 /// More dartdocs go here.
 library;
 
-export 'src/kenya_administrative_divisions_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+export 'src/main_controller.dart'
+    show MainController, kenyaAdministrativeDivisions;
+export 'src/models.dart' show County, Constituency, Ward;
